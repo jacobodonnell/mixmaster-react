@@ -87,7 +87,7 @@ const HomeLayout = () => {
   return (
     <div>
       <h1>HomeLayout</h1>
-      <Link to='/about'>About</Link>
+      <Link to="/about">About</Link>
     </div>
   );
 };
@@ -103,7 +103,7 @@ const About = () => {
   return (
     <div>
       <h1>About</h1>
-      <Link to='/'>Back Home</Link>
+      <Link to="/">Back Home</Link>
     </div>
   );
 };
@@ -177,16 +177,16 @@ import { NavLink } from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav>
-      <div className='nav-center'>
-        <span className='logo'>MixMaster</span>
-        <div className='nav-links'>
-          <NavLink to='/' className='nav-link'>
+      <div className="nav-center">
+        <span className="logo">MixMaster</span>
+        <div className="nav-links">
+          <NavLink to="/" className="nav-link">
             Home
           </NavLink>
-          <NavLink to='/about' className='nav-link'>
+          <NavLink to="/about" className="nav-link">
             About
           </NavLink>
-          <NavLink to='/newsletter' className='nav-link'>
+          <NavLink to="/newsletter" className="nav-link">
             Newsletter
           </NavLink>
         </div>
@@ -267,16 +267,16 @@ import styled from 'styled-components';
 const Navbar = () => {
   return (
     <Wrapper>
-      <div className='nav-center'>
-        <span className='logo'>MixMaster</span>
-        <div className='nav-links'>
-          <NavLink to='/' className='nav-link'>
+      <div className="nav-center">
+        <span className="logo">MixMaster</span>
+        <div className="nav-links">
+          <NavLink to="/" className="nav-link">
             Home
           </NavLink>
-          <NavLink to='/about' className='nav-link'>
+          <NavLink to="/about" className="nav-link">
             About
           </NavLink>
-          <NavLink to='/newsletter' className='nav-link'>
+          <NavLink to="/newsletter" className="nav-link">
             Newsletter
           </NavLink>
         </div>
@@ -374,7 +374,7 @@ const HomeLayout = () => {
   return (
     <>
       <Navbar />
-      <section className='page'>
+      <section className="page">
         <Outlet />
       </section>
     </>
@@ -412,10 +412,10 @@ const Error = () => {
     return (
       <Wrapper>
         <div>
-          <img src={img} alt='not found' />
+          <img src={img} alt="not found" />
           <h3>Ohh! </h3>
           <p>We can't seem to find the page you're looking for</p>
-          <Link to='/'>back home</Link>
+          <Link to="/">back home</Link>
         </div>
       </Wrapper>
     );
@@ -657,7 +657,7 @@ const CocktailList = ({ drinks }) => {
     );
   }
 
-  const formattedDrinks = drinks.map((item) => {
+  const formattedDrinks = drinks.map(item => {
     const { idDrink, strDrink, strDrinkThumb, strAlcoholic, strGlass } = item;
     return {
       id: idDrink,
@@ -669,7 +669,7 @@ const CocktailList = ({ drinks }) => {
   });
   return (
     <Wrapper>
-      {formattedDrinks.map((item) => {
+      {formattedDrinks.map(item => {
         return <CocktailCard key={item.id} {...item} />;
       })}
     </Wrapper>
@@ -687,15 +687,15 @@ const CocktailCard = ({ image, name, id, info, glass }) => {
   // console.log(data);
   return (
     <Wrapper>
-      <div className='img-container'>
-        <img src={image} alt={name} className='img' />
+      <div className="img-container">
+        <img src={image} alt={name} className="img" />
       </div>
-      <div className='footer'>
+      <div className="footer">
         <h4>{name}</h4>
         <h5>{glass}</h5>
         <p>{info}</p>
 
-        <Link to={`/cocktail/${id}`} className='btn'>
+        <Link to={`/cocktail/${id}`} className="btn">
           details
         </Link>
       </div>
@@ -723,9 +723,9 @@ const HomeLayout = () => {
   return (
     <>
       <Navbar />
-      <section className='page'>
+      <section className="page">
         {isPageLoading ? (
-          <div className='loading' />
+          <div className="loading" />
         ) : (
           <Outlet context={{ value }} />
         )}
@@ -790,46 +790,44 @@ const Cocktail = () => {
     strInstructions: instructions,
   } = singleDrink;
   const validIngredients = Object.keys(singleDrink)
-    .filter(
-      (key) => key.startsWith('strIngredient') && singleDrink[key] !== null
-    )
-    .map((key) => singleDrink[key]);
+    .filter(key => key.startsWith('strIngredient') && singleDrink[key] !== null)
+    .map(key => singleDrink[key]);
 
   return (
     <Wrapper>
       <header>
-        <Link to='/' className='btn'>
+        <Link to="/" className="btn">
           back home
         </Link>
         <h3>{name}</h3>
       </header>
-      <div className='drink'>
-        <img src={image} alt={name} className='img'></img>
-        <div className='drink-info'>
+      <div className="drink">
+        <img src={image} alt={name} className="img"></img>
+        <div className="drink-info">
           <p>
-            <span className='drink-data'>name :</span> {name}
+            <span className="drink-data">name :</span> {name}
           </p>
           <p>
-            <span className='drink-data'>category :</span> {category}
+            <span className="drink-data">category :</span> {category}
           </p>
           <p>
-            <span className='drink-data'>info :</span> {info}
+            <span className="drink-data">info :</span> {info}
           </p>
           <p>
-            <span className='drink-data'>glass :</span> {glass}
+            <span className="drink-data">glass :</span> {glass}
           </p>
           <p>
-            <span className='drink-data'>ingredients :</span>
+            <span className="drink-data">ingredients :</span>
             {validIngredients.map((item, index) => {
               return (
-                <span className='ing' key={item}>
+                <span className="ing" key={item}>
                   {item} {index < validIngredients.length - 1 ? ',' : ''}
                 </span>
               );
             })}
           </p>
           <p>
-            <span className='drink-data'>instructons :</span> {instructions}
+            <span className="drink-data">instructons :</span> {instructions}
           </p>
         </div>
       </div>
@@ -847,7 +845,7 @@ const Cocktail = () => {
   import { Navigate } from 'react-router-dom';
   const { id, data } = useLoaderData();
   // if (!data) return <h2>something went wrong...</h2>;
-  if (!data) return <Navigate to='/' />;
+  if (!data) return <Navigate to="/" />;
   return <Wrapper>....</Wrapper>;
 };
 ```
@@ -920,7 +918,7 @@ import { ToastContainer } from 'react-toastify';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <ToastContainer position='top-center' autoClose={2000} />
+    <ToastContainer position="top-center" autoClose={2000} />
     <App />
   </React.StrictMode>
 );
@@ -933,52 +931,52 @@ Newsletter.jsx
 ```js
 const Newsletter = () => {
   return (
-    <form className='form'>
+    <form className="form">
       <h4 style={{ textAlign: 'center', marginBottom: '2rem' }}>
         our newsletter
       </h4>
       {/* name */}
-      <div className='form-row'>
-        <label htmlFor='name' className='form-label'>
+      <div className="form-row">
+        <label htmlFor="name" className="form-label">
           name
         </label>
         <input
-          type='text'
-          className='form-input'
-          name='name'
-          id='name'
-          defaultValue='john'
+          type="text"
+          className="form-input"
+          name="name"
+          id="name"
+          defaultValue="john"
         />
       </div>
       {/* last name */}
-      <div className='form-row'>
-        <label htmlFor='lastName' className='form-label'>
+      <div className="form-row">
+        <label htmlFor="lastName" className="form-label">
           last name
         </label>
         <input
-          type='text'
-          className='form-input'
-          name='lastName'
-          id='lastName'
-          defaultValue='smith'
+          type="text"
+          className="form-input"
+          name="lastName"
+          id="lastName"
+          defaultValue="smith"
         />
       </div>
       {/* name */}
-      <div className='form-row'>
-        <label htmlFor='email' className='form-label'>
+      <div className="form-row">
+        <label htmlFor="email" className="form-label">
           email
         </label>
         <input
-          type='email'
-          className='form-input'
-          name='email'
-          id='email'
-          defaultValue='test@test.com'
+          type="email"
+          className="form-input"
+          name="email"
+          id="email"
+          defaultValue="test@test.com"
         />
       </div>
       <button
-        type='submit'
-        className='btn btn-block'
+        type="submit"
+        className="btn btn-block"
         style={{ marginTop: '0.5rem' }}
       >
         submit
@@ -1115,11 +1113,11 @@ const Newsletter = () => {
   const navigation = useNavigation();
   const isSubmitting = navigation.state === 'submitting';
   return (
-    <Form className='form' method='POST'>
+    <Form className="form" method="POST">
       ....
       <button
-        type='submit'
-        className='btn btn-block'
+        type="submit"
+        className="btn btn-block"
         style={{ marginTop: '0.5rem' }}
         disabled={isSubmitting}
       >
@@ -1147,14 +1145,14 @@ const SearchForm = () => {
   const isSubmitting = navigation.state === 'submitting';
   return (
     <Wrapper>
-      <Form className='form'>
+      <Form className="form">
         <input
-          type='search'
-          name='search'
-          className='form-input'
-          defaultValue='vodka'
+          type="search"
+          name="search"
+          className="form-input"
+          defaultValue="vodka"
         />
-        <button type='submit' className='btn' disabled={isSubmitting}>
+        <button type="submit" className="btn" disabled={isSubmitting}>
           {isSubmitting ? 'searching...' : 'search'}
         </button>
       </Form>
@@ -1211,11 +1209,11 @@ SearchForm.jsx
 const SearchForm = ({ searchTerm }) => {
   return (
     <Wrapper>
-      <Form className='form'>
+      <Form className="form">
         <input
-          type='search'
-          name='search'
-          className='form-input'
+          type="search"
+          name="search"
+          className="form-input"
           defaultValue={searchTerm}
         />
         .....
@@ -1263,7 +1261,7 @@ Landing.jsx
 ```js
 import { useQuery } from '@tanstack/react-query';
 
-const searchCocktailsQuery = (searchTerm) => {
+const searchCocktailsQuery = searchTerm => {
   return {
     queryKey: ['search', searchTerm || 'all'],
     queryFn: async () => {
@@ -1319,7 +1317,7 @@ Landing.jsx
 
 ```js
 export const loader =
-  (queryClient) =>
+  queryClient =>
   async ({ request }) => {
     const url = new URL(request.url);
     const searchTerm = url.searchParams.get('search') || '';
@@ -1364,7 +1362,7 @@ import axios from 'axios';
 const singleCocktailUrl =
   'https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=';
 
-const singleCocktailQuery = (id) => {
+const singleCocktailQuery = id => {
   return {
     queryKey: ['cocktail', id],
     queryFn: async () => {
@@ -1375,7 +1373,7 @@ const singleCocktailQuery = (id) => {
 };
 
 export const loader =
-  (queryClient) =>
+  queryClient =>
   async ({ params }) => {
     const { id } = params;
     await queryClient.ensureQueryData(singleCocktailQuery(id));
